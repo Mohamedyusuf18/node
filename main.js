@@ -86,11 +86,12 @@
 //     }
 //     con.end;
 // })
+import { configDotenv } from 'dotenv';
 
 
 const { Client } = require('pg');
 const express = require('express');
-
+configDotenv()
 const app = express();
 app.use(express.json());
 
@@ -183,6 +184,6 @@ app.delete('/delete/:id', (req, res) => {
   });
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log("Server running on port 3000");
 });
