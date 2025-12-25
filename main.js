@@ -106,6 +106,7 @@ con.connect()
   .then(() => console.log("Database connected"))
   .catch(err => console.error("DB connection error", err));
 
+
 app.post('/postData', (req, res) => {
   const { id, name } = req.body;
 
@@ -182,7 +183,6 @@ app.delete('/delete/:id', (req, res) => {
   });
 });
 
-// app.listen(3000, () => {
-//   console.log("Server running on port 3000");
-// });
-
+app.listen(3000, () => {
+  console.log("Server running on port 3000");
+});
