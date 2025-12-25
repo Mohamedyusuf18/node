@@ -86,12 +86,12 @@
 //     }
 //     con.end;
 // })
-import { configDotenv } from 'dotenv';
+const dotenv=require('dotenv')
 
 
 const { Client } = require('pg');
 const express = require('express');
-configDotenv()
+dotenv.config()
 const app = express();
 app.use(express.json());
 
