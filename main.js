@@ -167,6 +167,71 @@ app.get('/fetchDatabyId/:id', (req, res) => {
     }
   });
 });
+app.get("/", (req, res) => {
+  res.status(200).send(`
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>API Welcome</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          background: #0f172a;
+          color: #e5e7eb;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+        }
+        .card {
+          background: #020617;
+          padding: 30px 40px;
+          border-radius: 12px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+          max-width: 500px;
+          width: 100%;
+        }
+        h1 {
+          margin-top: 0;
+          color: #38bdf8;
+        }
+        ul {
+          padding-left: 18px;
+        }
+        li {
+          margin: 8px 0;
+        }
+        .method {
+          font-weight: bold;
+          color: #22c55e;
+        }
+        .path {
+          color: #fbbf24;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="card">
+        <h1>🚀 Welcome to the API</h1>
+        <p>The server is running successfully.</p>
+        <h3>Available Endpoints</h3>
+        <ul>
+          <li><span class="method">GET</span> <span class="path">/health</span></li>
+          <li><span class="method">POST</span> <span class="path">/postData</span></li>
+          <li><span class="method">GET</span> <span class="path">/fetchData</span></li>
+          <li><span class="method">GET</span> <span class="path">/fetchDatabyId/:id</span></li>
+          <li><span class="method">PUT</span> <span class="path">/update/:id</span></li>
+          <li><span class="method">DELETE</span> <span class="path">/delete/:id</span></li>
+        </ul>
+      </div>
+    </body>
+    </html>
+  `);
+});
+
 
 app.put('/update/:id', (req, res) => {
   const { id } = req.params;
