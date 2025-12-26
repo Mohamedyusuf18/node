@@ -86,21 +86,40 @@
 //     }
 //     con.end;
 // })
+const cors =require('cors')
+//const dotenv=require('dotenv')
 const dotenv=require('dotenv')
-
-
+dotenv.config();
 const { Client } = require('pg');
 const express = require('express');
 dotenv.config()
 const app = express();
-app.use(express.json());
+app.use(cors(express.json()));
+app.use(cors());
+// const con = new Client({
+//   host: "process.env.localhost",
+//   user: "process.env.postgres",
+//   port: process.env.5432,
+//   password: "process.env.12345678",
+//   database: "process.env.demodata"
+// });
 
+
+// const con = new Client({
+//   host: process.env.DB_HOST,
+//   user: process.env.DB_USER,
+//   port: Number(process.env.DB_PORT),
+//   password: process.env.DB_PASSWORD,
+//   database: process.env.DB_NAME,
+//     ssl: {
+//     rejectUnauthorized: false,
+//   }
+// });
 const con = new Client({
-  host: "localhost",
-  user: "postgres",
-  port: 5432,
-  password: "12345678",
-  database: "demodata"
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 con.connect()
